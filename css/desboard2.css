@@ -6,15 +6,15 @@
 }
 
 :root {
-  --bg: #f5f3ee;
-  --bg-2: #efece5;
-  --card: #ffffff;
-  --ink: #0d0d0d;
-  --ink-2: #2d2d2d;
-  --muted: #6b6b66;
-  --hairline: #e3dfd6;
-  --hairline-2: #d8d3c8;
-  --accent: #ffffff;
+  --bg: #0d0d0d;
+  --bg-2: #1a1a1a;
+  --card: #1a1a1a;
+  --ink: #ffffff;
+  --ink-2: #cccccc;
+  --muted: #999999;
+  --hairline: #333333;
+  --hairline-2: #0d0d0d;
+  --accent: #0d0d0d;
   --good: #1f6f43;
   --bad: #a23a2a;
   --radius: 14px;
@@ -93,8 +93,8 @@ h3,
   height: 28px;
   display: grid;
   place-items: center;
-  background: var(--ink);
-  color: var(--bg);
+  background: #2DDD71;
+  color: white;
   border-radius: 8px;
   font-size: 12px;
 }

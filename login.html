@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Entrar — Acesse sua conta</title>
-  <link rel="stylesheet" href="/css/login.css" />
+  <link rel="stylesheet" href="css/login.css" />
 </head>
 
 <body>
@@ -115,6 +115,7 @@
         brandSub.textContent = 'Preencha os dados para começar';
         toggleLink.textContent = 'Entrar';
         toggleLink.parentElement.firstChild.textContent = 'Já tem uma conta? ';
+        if (window.setSignupMode) window.setSignupMode(true);
       } else {
         confirmField.classList.remove('show');
         confirmInput.required = false;
@@ -124,6 +125,7 @@
         brandSub.textContent = 'Entre com sua conta para continuar';
         toggleLink.textContent = 'Cadastre-se';
         toggleLink.parentElement.firstChild.textContent = 'Não tem uma conta? ';
+        if (window.setSignupMode) window.setSignupMode(false);
       }
     });
   </script>

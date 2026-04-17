@@ -16,11 +16,12 @@ export async function loginSupabase(email, password) {
 
 
         setTimeout(() => {
-
             console.log('Login bem-sucedido:', response.data);
-            window.location.href = "/desboard.html";
+            window.location.href = "desboard.html";
 
         }, 1000);
+
+        return response.data;
 
     } catch (error) {
         console.error('Erro inesperado:', error);
@@ -32,7 +33,7 @@ export async function loginSupabase(email, password) {
 
 export async function signUpSupabase(email, password) {
     try {
-        const response = await supabase.auth.signUp({
+        const response = await supabase.auth.signUp({   
             email,
             password
         });

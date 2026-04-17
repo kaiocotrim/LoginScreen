@@ -4,38 +4,38 @@ import { signUpSupabase } from './auth.js';
 const form = document.getElementById('login-form');
 const createAccountButton = document.getElementById('toggle-signup');
 
+let isSignupMode = false;
+
+// Expor para o script inline do HTML poder alterar o modo
+window.setSignupMode = function (value) {
+    isSignupMode = value;
+};
+
 async function handleSubmit(event) { // função para lidar com o envio do formulário
     event.preventDefault() // evitar o envio padrão do formulário
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // aqui você pode adicionar a lógica para autenticar o usuário, como enviar os dados para um servidor
-    const result = await loginSupabase(email, password);
 
-    console.log('Resultado do login:', result);
+    if (isSignupMode) {
+        const passwordConfirm = document.getElementById('password-confirm').value;
+
+        if (password !== passwordConfirm) {
+            alert('As senhas não coincidem!');
+            return;
+        }
+
+        const result = await signUpSupabase(email, password);
+        console.log('Resultado da criação de conta:', result);
+        if (result) {
+            alert('Conta criada com sucesso! Verifique seu e-mail.');
+        }
+    } else {
+        const result = await loginSupabase(email, password);
+        console.log('Resultado do login:', result);
+    }
 }
 
 
 if(form) {
     form.addEventListener('submit', handleSubmit); // adicionar o evento de submit ao formulário
-}
-
-
-async function criarConta(event) {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value
-    const passwordConfirm = document.getElementById('password-confirm').value;
-
-    if (password !== passwordConfirm) {
-        alert('As senhas não coincidem!');
-        return;
-    }
-
-    const result = await signUpSupabase(email, password);
-    console.log('Resultado da criação de conta:', result);
-}
-
-if (createAccountButton) {
-    createAccountButton.addEventListener('click', criarConta);
 }
