@@ -6,7 +6,7 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: #F5F3EE;
   --foreground: #0a0a0a;
   --muted: #f5f5f5;
   --muted-foreground: #737373;
@@ -130,6 +130,28 @@ body {
   border-color: var(--foreground);
 }
 
+/* Confirm password — animated */
+.field-confirm {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  overflow: hidden;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              margin 0.4s ease;
+  margin-top: -20px;
+}
+
+.field-confirm > * {
+  min-height: 0;
+}
+
+.field-confirm.show {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 0;
+}
+
 /* Password */
 .password-wrapper {
   position: relative;
@@ -241,4 +263,17 @@ body {
 .signup a:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+
+/* LOGO HOME  */
+
+#logoHome {
+  text-decoration: none;
+  color: white;
+}
+
+#logoHome:hover {
+  transition: 1s;
+  color: #2ddd71;
 }
