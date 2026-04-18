@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Criar perfil — Ordere</title>
+    <meta name="description" content="Configure seu perfil na Ordere para começar a organizar sua empresa." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/perfil.css" />
+    <script type="module" src="js/perfil.js"></script>
+  </head>
+  <body>
+    <!-- Topbar -->
+    <header class="topbar">
+      <a href="#" class="brand">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+        </span>
+        <span class="brand-name">Ordere</span>
+      </a>
+      <div class="topbar-right">
+        <span class="step-indicator">Passo <strong>2</strong> de 4</span>
+        <a href="#" class="ghost-link">Sair</a>
+      </div>
+    </header>
+
+    <main class="shell">
+      <!-- Left: context -->
+      <aside class="context">
+        <span class="eyebrow">Onboarding</span>
+        <h1 class="display">
+          Crie seu perfil.<br />
+          <span class="muted" id="grenText">Comece em minutos.</span>
+        </h1>
+        <p class="lead">
+          Vamos personalizar sua experiência na Ordere. Suas informações ficam
+          privadas e podem ser editadas a qualquer momento.
+        </p>
+
+        <ol class="steps">
+          <li class="step done">
+            <span class="step-num">01</span>
+            <div>
+              <p class="step-title">Conta criada</p>
+              <p class="step-desc">E-mail confirmado com sucesso</p>
+            </div>
+          </li>
+          <li class="step active">
+            <span class="step-num">02</span>
+            <div>
+              <p class="step-title">Perfil do usuário</p>
+              <p class="step-desc">Conte-nos sobre você e sua empresa</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <div>
+              <p class="step-title">Convidar equipe</p>
+              <p class="step-desc">Adicione colegas ao workspace</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">04</span>
+            <div>
+              <p class="step-title">Primeiro projeto</p>
+              <p class="step-desc">Configure seu pipeline inicial</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="quote">
+          <p>
+            “A Ordere reorganizou nossa operação em 6 semanas. O onboarding é
+            tão claro quanto a metodologia.”
+          </p>
+          <footer>— Marina Costa, COO · Lumen Studio</footer>
+        </div>
+      </aside>
+
+      <!-- Right: form card -->
+      <section class="form-card">
+        <header class="form-header">
+          <h2>Informações do perfil</h2>
+          <p>Os campos marcados com <span class="req">*</span> são obrigatórios.</p>
+        </header>
+
+        <form class="form" onsubmit="event.preventDefault();">
+          <!-- Avatar -->
+          <div class="avatar-row">
+            <div class="avatar">
+              <span>C</span>
+            </div>
+            <div class="avatar-actions">
+              <button type="button" class="btn btn-outline btn-sm">Enviar foto</button>
+              <button type="button" class="btn btn-ghost btn-sm">Remover</button>
+              <p class="hint">PNG ou JPG, até 2MB. Recomendado 400×400px.</p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Identidade -->
+          <fieldset>
+            <legend>Identidade</legend>
+            <div class="grid-2">
+              <label class="field">
+                <span>Nome <i class="req">*</i></span>
+                <input type="text" placeholder="Nome" />
+              </label>
+              <label class="field">
+                <span>Sobrenome <i class="req">*</i></span>
+                <input type="text" placeholder="Sobrenome" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Nome de exibição</span>
+              <input type="text" placeholder="Nome de exibição" />
+              <small class="hint">Visível para sua equipe e clientes.</small>
+            </label>
+
+            <div class="grid-2">
+              <label class="field">
+                <span>Telefone</span>
+                <input type="tel" placeholder="Telefone" />
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="divider"></div>
+
+          <!-- Empresa -->
+          <fieldset>
+            <legend>Empresa</legend>
+            <div class="grid-2">
+              <label class="field">
+                <span>Empresa <i class="req">*</i></span>
+                <input type="text" placeholder="Empresa" />
+              </label>
+              <label class="field">
+                <span>Cargo <i class="req">*</i></span>
+                <input type="text" placeholder="Cargo" />
+              </label>
+            </div>
+
+            <div class="grid-2">
+              <label class="field">
+                <span>Setor</span>
+                <div class="select-wrap">
+                  <select>
+                    <option>Tecnologia</option>
+                    <option selected>Serviços criativos</option>
+                    <option>Indústria</option>
+                    <option>Varejo</option>
+                    <option>Saúde</option>
+                    <option>Educação</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+              </label>
+              <label class="field">
+                <span>Tamanho da equipe</span>
+                <div class="select-wrap">
+                  <select>
+                    <option>1–5 pessoas</option>
+                    <option selected>6–20 pessoas</option>
+                    <option>21–50 pessoas</option>
+                    <option>51–200 pessoas</option>
+                    <option>200+ pessoas</option>
+                  </select>
+                </div>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="divider"></div>
+
+          <!-- Função primária -->
+          <fieldset>
+            <legend>Como você vai usar a Ordere?</legend>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="role" checked />
+                <div>
+                  <p class="rc-title">Liderança & estratégia</p>
+                  <p class="rc-desc">Visão de portfolio, KPIs e decisões.</p>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="role" />
+                <div>
+                  <p class="rc-title">Gestão de operação</p>
+                  <p class="rc-desc">Processos, fluxos e produtividade.</p>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="role" />
+                <div>
+                  <p class="rc-title">Execução de projetos</p>
+                  <p class="rc-desc">Tarefas, entregas e colaboração.</p>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="role" />
+                <div>
+                  <p class="rc-title">Consultoria externa</p>
+                  <p class="rc-desc">Atende múltiplos clientes.</p>
+                </div>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="divider"></div>
+
+          <!-- Bio -->
+          <fieldset>
+            <legend>Sobre você</legend>
+            <label class="field">
+              <span>Bio curta</span>
+              <textarea rows="4" placeholder="Bio curta"></textarea>
+              <small class="hint">Máx. 240 caracteres.</small>
+            </label>
+            <!-- <div class="grid-2">
+              <label class="field">
+                <span>Fuso horário</span>
+                <div class="select-wrap">
+                  <select>
+                    <option selected>(GMT-03) Brasília</option>
+                    <option>(GMT-05) Lima</option>
+                    <option>(GMT+00) Lisboa</option>
+                    <option>(GMT+01) Madrid</option>
+                  </select>
+                </div>
+              </label>
+              <label class="field">
+                <span>Idioma</span>
+                <div class="select-wrap">
+                  <select>
+                    <option selected>Português (BR)</option>
+                    <option>English (US)</option>
+                    <option>Español</option>
+                  </select>
+                </div>
+              </label>
+            </div> -->
+          </fieldset>
+
+          <div class="divider"></div>
+
+          <!-- Preferências -->
+          <fieldset>
+            <legend>Preferências</legend>
+            <label class="switch-row">
+              <div>
+                <p class="sr-title">Resumo semanal por e-mail</p>
+                <p class="sr-desc">Receba um panorama dos KPIs toda segunda.</p>
+              </div>
+              <span class="switch">
+                <input type="checkbox" checked />
+                <span class="track"></span>
+              </span>
+            </label>
+            <label class="switch-row">
+              <div>
+                <p class="sr-title">Notificações de menções</p>
+                <p class="sr-desc">Avisar quando alguém marcar você em comentários.</p>
+              </div>
+              <span class="switch">
+                <input type="checkbox" checked />
+                <span class="track"></span>
+              </span>
+            </label>
+            <label class="switch-row">
+              <div>
+                <p class="sr-title">Perfil público no workspace</p>
+                <p class="sr-desc">Permitir que clientes vejam seu nome e cargo.</p>
+              </div>
+              <span class="switch">
+                <input type="checkbox" />
+                <span class="track"></span>
+              </span>
+            </label>
+          </fieldset>
+
+          <!-- Footer actions -->
+          <div class="form-footer">
+            <p class="terms">
+              Ao continuar, você concorda com os
+              <a href="#">Termos</a> e a <a href="#">Política de Privacidade</a>.
+            </p>
+            <div class="actions">
+              <button type="button" class="btn btn-ghost">Voltar</button>
+              <button type="button" class="btn btn-outline">Salvar rascunho</button>
+              <button type="submit" class="btn btn-primary">
+                Continuar
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>© 2025 Ordere · Organização que opera.</p>
+      <p><a href="#">Precisa de ajuda?</a></p>
+    </footer>
+  </body>
+</html>

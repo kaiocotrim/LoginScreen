@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/desboard2.css" />
+    <script type="module" src="js/desboard.js"></script>
 </head>
 <body>
   <div class="app">
@@ -88,7 +89,7 @@
       <section class="page-header">
         <div>
           <div class="eyebrow"><span class="rule"></span> Painel · Abril 2026</div>
-          <h1 class="page-title">Bom dia, Marina.</h1>
+          <h1 class="page-title">Olá, <span id="user-name">carregando...</span> </h1>
           <p class="page-sub">Você tem <strong>4 projetos</strong> em fase de implantação e <strong>2 diagnósticos</strong> aguardando aprovação.</p>
         </div>
         <div class="page-tabs">
@@ -103,37 +104,37 @@
       <section class="kpi-grid">
         <article class="kpi">
           <div class="kpi-label">Receita recorrente</div>
-          <div class="kpi-value">R$ 482.300</div>
-          <div class="kpi-delta up">▲ 12,4% vs. mês anterior</div>
+          <div class="kpi-value">R$ 0</div>
+          <div class="kpi-delta">—</div>
           <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none">
-            <polyline points="0,22 12,18 24,20 36,14 48,16 60,9 72,11 84,5 100,7" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <polyline points="0,25 100,25" fill="none" stroke="currentColor" stroke-width="1.5"/>
           </svg>
         </article>
 
         <article class="kpi">
           <div class="kpi-label">Projetos ativos</div>
-          <div class="kpi-value">28</div>
-          <div class="kpi-delta up">▲ 3 novos esta semana</div>
+          <div class="kpi-value">0</div>
+          <div class="kpi-delta">—</div>
           <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none">
-            <polyline points="0,18 14,20 28,15 42,17 56,12 70,14 84,9 100,11" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <polyline points="0,25 100,25" fill="none" stroke="currentColor" stroke-width="1.5"/>
           </svg>
         </article>
 
         <article class="kpi">
           <div class="kpi-label">NPS médio</div>
-          <div class="kpi-value">9,4</div>
-          <div class="kpi-delta up">▲ 0,3 pontos</div>
+          <div class="kpi-value">0</div>
+          <div class="kpi-delta">—</div>
           <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none">
-            <polyline points="0,15 14,14 28,16 42,12 56,13 70,10 84,11 100,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <polyline points="0,25 100,25" fill="none" stroke="currentColor" stroke-width="1.5"/>
           </svg>
         </article>
 
         <article class="kpi">
           <div class="kpi-label">Horas faturáveis</div>
-          <div class="kpi-value">1.284h</div>
-          <div class="kpi-delta down">▼ 4,1% vs. meta</div>
+          <div class="kpi-value">0h</div>
+          <div class="kpi-delta">—</div>
           <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none">
-            <polyline points="0,10 14,12 28,11 42,15 56,14 70,18 84,17 100,20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <polyline points="0,25 100,25" fill="none" stroke="currentColor" stroke-width="1.5"/>
           </svg>
         </article>
       </section>
@@ -159,14 +160,14 @@
               <span>120k</span><span>90k</span><span>60k</span><span>30k</span><span>0</span>
             </div>
             <div class="bars">
-              <div class="bar-group"><div class="bar" style="--h:62%;background:#0d0d0d"></div><div class="bar" style="--h:38%;background:#8a8a8a"></div><div class="bar" style="--h:22%;background:#d4cfc4"></div><span class="x">Jan</span></div>
-              <div class="bar-group"><div class="bar" style="--h:55%;background:#0d0d0d"></div><div class="bar" style="--h:48%;background:#8a8a8a"></div><div class="bar" style="--h:30%;background:#d4cfc4"></div><span class="x">Fev</span></div>
-              <div class="bar-group"><div class="bar" style="--h:72%;background:#0d0d0d"></div><div class="bar" style="--h:54%;background:#8a8a8a"></div><div class="bar" style="--h:34%;background:#d4cfc4"></div><span class="x">Mar</span></div>
-              <div class="bar-group"><div class="bar" style="--h:68%;background:#0d0d0d"></div><div class="bar" style="--h:62%;background:#8a8a8a"></div><div class="bar" style="--h:40%;background:#d4cfc4"></div><span class="x">Abr</span></div>
-              <div class="bar-group"><div class="bar" style="--h:80%;background:#0d0d0d"></div><div class="bar" style="--h:58%;background:#8a8a8a"></div><div class="bar" style="--h:42%;background:#d4cfc4"></div><span class="x">Mai</span></div>
-              <div class="bar-group"><div class="bar" style="--h:88%;background:#0d0d0d"></div><div class="bar" style="--h:66%;background:#8a8a8a"></div><div class="bar" style="--h:48%;background:#d4cfc4"></div><span class="x">Jun</span></div>
-              <div class="bar-group"><div class="bar" style="--h:74%;background:#0d0d0d"></div><div class="bar" style="--h:70%;background:#8a8a8a"></div><div class="bar" style="--h:52%;background:#d4cfc4"></div><span class="x">Jul</span></div>
-              <div class="bar-group"><div class="bar" style="--h:92%;background:#0d0d0d"></div><div class="bar" style="--h:74%;background:#8a8a8a"></div><div class="bar" style="--h:58%;background:#d4cfc4"></div><span class="x">Ago</span></div>
+              <div class="bar-group"><div class="bar" style="--h:0%;background:#0d0d0d"></div><div class="bar" style="--h:0%;background:#8a8a8a"></div><div class="bar" style="--h:0%;background:#d4cfc4"></div><span class="x">Jan</span></div>
+              <div class="bar-group"><div class="bar" style="--h:0%;background:#0d0d0d"></div><div class="bar" style="--h:0%;background:#8a8a8a"></div><div class="bar" style="--h:0%;background:#d4cfc4"></div><span class="x">Fev</span></div>
+              <div class="bar-group"><div class="bar" style="--h:0%;background:#0d0d0d"></div><div class="bar" style="--h:0%;background:#8a8a8a"></div><div class="bar" style="--h:0%;background:#d4cfc4"></div><span class="x">Mar</span></div>
+              <div class="bar-group"><div class="bar" style="--h:0%;background:#0d0d0d"></div><div class="bar" style="--h:0%;background:#8a8a8a"></div><div class="bar" style="--h:0%;background:#d4cfc4"></div><span class="x">Abr</span></div>
+              <div class="bar-group"><div class="bar" style="--h:0%;background:#0d0d0d"></div><div class="bar" style="--h:0%;background:#8a8a8a"></div><div class="bar" style="--h:0%;background:#d4cfc4"></div><span class="x">Mai</span></div>
+              <div class="bar-group"><div class="bar" style="--h:0%;background:#0d0d0d"></div><div class="bar" style="--h:0%;background:#8a8a8a"></div><div class="bar" style="--h:0%;background:#d4cfc4"></div><span class="x">Jun</span></div>
+              <div class="bar-group"><div class="bar" style="--h:0%;background:#0d0d0d"></div><div class="bar" style="--h:0%;background:#8a8a8a"></div><div class="bar" style="--h:0%;background:#d4cfc4"></div><span class="x">Jul</span></div>
+              <div class="bar-group"><div class="bar" style="--h:0%;background:#0d0d0d"></div><div class="bar" style="--h:0%;background:#8a8a8a"></div><div class="bar" style="--h:0%;background:#d4cfc4"></div><span class="x">Ago</span></div>
             </div>
           </div>
         </article>
@@ -320,5 +321,6 @@
       </footer>
     </main>
   </div>
+
 </body>
 </html>

@@ -1,21 +1,25 @@
-import { loginSupabase } from './auth.js';
-import { signUpSupabase } from './auth.js';
-// variáveis para acessar os elementos do formulário
-const form = document.getElementById('login-form');
-const createAccountButton = document.getElementById('toggle-signup');
+// 1. Importações limpas e organizadas
+import { loginSupabase, signUpSupabase, loginGoogle } from './auth.js';
 
+const form = document.getElementById('login-form');
 let isSignupMode = false;
 
-// Expor para o script inline do HTML poder alterar o modo
+// Função para alternar entre Login e Cadastro
 window.setSignupMode = function (value) {
     isSignupMode = value;
+    // Exemplo de variedade: você poderia mudar o texto do botão aqui
+    const btn = document.querySelector('button[type="submit"]');
+    btn.innerText = isSignupMode ? "Criar Conta" : "Entrar";
 };
 
-async function handleSubmit(event) { // função para lidar com o envio do formulário
-    event.preventDefault() // evitar o envio padrão do formulário
+// 2. A função principal que lida com o formulário
+async function handleSubmit(event) {
+    event.preventDefault(); // Impede o recarregamento da página
+
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    // CENÁRIO A: CADASTRO
     if (isSignupMode) {
         const passwordConfirm = document.getElementById('password-confirm').value;
 
@@ -25,17 +29,49 @@ async function handleSubmit(event) { // função para lidar com o envio do formu
         }
 
         const result = await signUpSupabase(email, password);
-        console.log('Resultado da criação de conta:', result);
-        if (result) {
-            alert('Conta criada com sucesso! Verifique seu e-mail.');
+        if (result.success) {
+            alert('Conta criada! Como você removeu a confirmação, já pode logar.');
+            // Opcional: mudar para modo login automaticamente
+            setSignupMode(false); 
+        } else {
+            alert('Erro no cadastro: ' + result.error);
         }
+
+    // CENÁRIO B: LOGIN (Aqui unimos as duas partes que você enviou)
     } else {
         const result = await loginSupabase(email, password);
-        console.log('Resultado do login:', result);
+
+        if (result.success) {
+            // DECISÃO DE ARQUITETURA: Para onde o usuário vai?
+            if (result.isProfileComplete) {
+                console.log("Usuário antigo: Indo para o Dashboard");
+                window.location.href = "desboard.html";
+            } else {
+                console.log("Usuário novo: Indo finalizar perfil");
+                window.location.href = "perfil.html";
+            }
+        } else {
+            alert("Erro ao entrar: " + result.error);
+        }
     }
 }
 
-
-if(form) {
-    form.addEventListener('submit', handleSubmit); // adicionar o evento de submit ao formulário
+// 3. Ativação dos ouvintes de eventos
+if (form) {
+    form.addEventListener('submit', handleSubmit);
 }
+
+const googleButton = document.querySelector('.btn-social');
+if (googleButton) {
+    googleButton.addEventListener('click', async () => {
+        await loginGoogle();
+        // Nota: O Google lida com redirecionamento via URL no painel do Supabase
+    });
+}
+
+
+
+// js/ui.js
+
+
+// Ao clicar no botão de entrar:
