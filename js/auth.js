@@ -17,12 +17,14 @@ export async function loginSupabase(email, password) {
         // Esta é a parte que você perguntou se podia adicionar!
         const { data: profile, error: dbError } = await supabase
             .from('users')
-            .select('name')
+            .select('nome')
             .eq('id', data.user.id)
             .single();
 
+        if (dbError) return { success: false, error: dbError.message };
+
         // 3. Verificamos se o perfil está completo
-        const isProfileComplete = profile && profile.name !== null && profile.name !== "";
+        const isProfileComplete = profile && profile.nome !== null && profile.nome !== "";
 
         // Retornamos um objeto completo para a nossa UI
         return { 
@@ -58,9 +60,7 @@ export async function signUpSupabase(email, password) {
             const { error: dbError } = await supabase
                 .from('users') 
                 .upsert([{ 
-                    id: data.user.id,
-                    email: email,
-                    money: 0
+                    id: data.user.id
                 }], { onConflict: 'id' });
 
             // Se der erro ao criar a linha no banco, avisamos aqui.

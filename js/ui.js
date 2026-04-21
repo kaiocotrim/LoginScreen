@@ -45,7 +45,7 @@ async function handleSubmit(event) {
             // DECISÃO DE ARQUITETURA: Para onde o usuário vai?
             if (result.isProfileComplete) {
                 console.log("Usuário antigo: Indo para o Dashboard");
-                window.location.href = "desboard.html";
+                window.location.href = "desboard1.html";
             } else {
                 console.log("Usuário novo: Indo finalizar perfil");
                 window.location.href = "perfil.html";

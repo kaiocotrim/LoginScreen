@@ -165,7 +165,7 @@ h1, h2, h3, h4 {
   letter-spacing: -0.025em;
 }
 .italic { font-style: italic; font-family: var(--font-display); }
-.muted { color: #2ddd71; }
+.muted { color: #34DE74; }
 .hero-sub {
   margin-top: 24px;
   max-width: 640px;
@@ -413,6 +413,9 @@ h1, h2, h3, h4 {
 .plan .btn { margin-top: 28px; }
 
 /* CONTATO */
+#contato { padding-top: 32px; }
+@media (min-width: 768px) { #contato { padding-top: 56px; } }
+
 .cta-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -461,6 +464,8 @@ h1, h2, h3, h4 {
   grid-template-columns: 1fr;
   gap: 40px;
 }
+
+
 @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; } }
 .footer-brand p { margin-top: 14px; max-width: 360px; font-size: 14px; color: var(--muted); }
 .footer-list { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
@@ -481,3 +486,29 @@ h1, h2, h3, h4 {
 }
 .footer-legal { display: flex; gap: 24px; }
 .footer-legal a:hover { color: var(--ink); }
+
+.plan.plan-featured{
+  color: #2ddd71;
+}
+
+.plan.plan-featured .plan-tag{
+  color: rgba(45,221,113,.7);
+  background: rgba(45,221,113,.12);
+}
+
+.plan-featured .plan-price { color: #2ddd71; }
+.plan-featured .plan-period { color: #2ddd71; }
+.plan-featured .plan-desc { color: #2ddd71; }
+.plan-featured ul li { color: #2ddd71; }
+.plan-featured ul li::before { color: #2ddd71; }
+
+.plan-featured .btn.btn-invert {
+  background: #2ddd71;
+  color: var(--ink);
+  border-color: #2ddd71;
+}
+.plan-featured .btn.btn-invert:hover {
+  background: #24c462;
+  border-color: #24c462;
+  color: white;
+}

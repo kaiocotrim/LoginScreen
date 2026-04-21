@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ordere · Gestão Financeira</title>
+    <meta name="description" content="Painel financeiro da Ordere — fluxo de caixa, contas a pagar e receber, orçamento e indicadores em estilo editorial Paper & Ink." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+     <link rel="shortcut icon" href="assets/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/desboard1.css" />
+    <script type="module" src="js/desboard.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Navegação principal">
+        <a href="index.html" class="brand">
+          <img src="assets/favicon-32x32.png" alt="">
+          <span class="brand-name">Ordere<span class="brand-dot">.</span></span>
+        </a>
+
+        <nav class="nav">
+          <p class="nav-label">Visão geral</p>
+          <ul>
+            <li><a href="#" class="nav-link">Resumo</a></li>
+            <li><a href="#" class="nav-link active">Financeiro</a></li>
+            <li><a href="#" class="nav-link">Operação</a></li>
+          </ul>
+
+          <p class="nav-label">Financeiro</p>
+          <ul>
+            <li><a href="#" class="nav-link">Fluxo de caixa</a></li>
+            <li><a href="#" class="nav-link">Contas a receber</a></li>
+            <li><a href="#" class="nav-link">Contas a pagar</a></li>
+            <li><a href="#" class="nav-link">Orçamento</a></li>
+            <li><a href="#" class="nav-link">Conciliação</a></li>
+            <li><a href="#" class="nav-link">Relatórios</a></li>
+          </ul>
+
+          <p class="nav-label">Conta</p>
+          <ul>
+            <li><a href="#" class="nav-link">Equipe</a></li>
+            <li><a href="#" class="nav-link">Configurações</a></li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-foot">
+          <div class="account">
+            <div class="avatar" id="account-avatar">...</div>
+            <div>
+              <p class="account-name" id="account-name">carregando...</p>
+              <p class="account-role" id="account-role">Usuário · Ordere</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <!-- Topbar -->
+        <header class="topbar">
+          <div class="crumbs">
+            <span>Painel</span>
+            <span class="crumb-sep">/</span>
+            <span>Financeiro</span>
+            <span class="crumb-sep">/</span>
+            <span class="crumb-current">Visão geral</span>
+          </div>
+
+          <div class="topbar-actions">
+            <div class="search">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" placeholder="Buscar lançamentos, fornecedores, notas…" />
+              <kbd>⌘ K</kbd>
+            </div>
+            <button class="icon-btn" aria-label="Notificações">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+              <span class="dot"></span>
+            </button>
+            <button class="btn btn-ghost">Exportar</button>
+            <button class="btn btn-primary">+ Novo lançamento</button>
+          </div>
+        </header>
+
+        <!-- Page header -->
+        <section class="page-head">
+          <div>
+            <p class="eyebrow">— Visão geral · Outubro 2026</p>
+            <h1 class="page-title">Olá, <span id="user-name">carregando...</span> </h1>
+            <p class="page-sub">Acompanhe caixa, recebíveis, despesas e margem em uma única tela editorial.</p>
+          </div>
+          <div class="filters">
+            <div class="seg">
+              <button>Hoje</button>
+              <button>7d</button>
+              <button class="on">30d</button>
+              <button>90d</button>
+              <button>Ano</button>
+            </div>
+            <div class="period">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              01 Out — 31 Out
+            </div>
+          </div>
+        </section>
+
+        <!-- KPI grid -->
+        <section class="kpis">
+          <article class="kpi">
+            <header>
+              <span class="kpi-label">Saldo em caixa</span>
+              <span class="tag tag-soft">Atualizado agora</span>
+            </header>
+            <p class="kpi-value">R$ ...<span class="cents"></span></p>
+            <div class="kpi-foot">
+              <span class="delta up">▲ 12,4%</span>
+              <span class="kpi-hint">vs. mês anterior</span>
+            </div>
+            <svg class="spark" viewBox="0 0 200 56" preserveAspectRatio="none">
+              <path d="M0,40 L20,38 L40,30 L60,34 L80,22 L100,26 L120,18 L140,22 L160,12 L180,16 L200,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </article>
+
+          <article class="kpi">
+            <header>
+              <span class="kpi-label">Receita do mês</span>
+              <span class="tag tag-dark">MRR</span>
+            </header>
+            <p class="kpi-value">R$ ...<span class="cents"></span></p>
+            <div class="kpi-foot">
+              <span class="delta up">▲ 8,1%</span>
+              <span class="kpi-hint">meta 92% atingida</span>
+            </div>
+            <svg class="spark" viewBox="0 0 200 56" preserveAspectRatio="none">
+              <path d="M0,46 L20,40 L40,42 L60,30 L80,32 L100,24 L120,26 L140,18 L160,20 L180,12 L200,14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </article>
+
+          <article class="kpi">
+            <header>
+              <span class="kpi-label">Despesas</span>
+              <span class="tag tag-soft">62 lançamentos</span>
+            </header>
+            <p class="kpi-value">R$ ...<span class="cents"></span></p>
+            <div class="kpi-foot">
+              <span class="delta down">▼ 3,2%</span>
+              <span class="kpi-hint">redução vs. set/26</span>
+            </div>
+            <svg class="spark" viewBox="0 0 200 56" preserveAspectRatio="none">
+              <path d="M0,18 L20,22 L40,20 L60,28 L80,26 L100,32 L120,30 L140,36 L160,34 L180,40 L200,38" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </article>
+
+          <article class="kpi">
+            <header>
+              <span class="kpi-label">Margem líquida</span>
+              <span class="tag tag-soft">EBITDA</span>
+            </header>
+            <p class="kpi-value">...<span class="cents">%</span></p>
+            <div class="kpi-foot">
+              <span class="delta up">▲ 2,1 p.p.</span>
+              <span class="kpi-hint">acima do trimestre</span>
+            </div>
+            <svg class="spark" viewBox="0 0 200 56" preserveAspectRatio="none">
+              <path d="M0,36 L20,32 L40,34 L60,28 L80,30 L100,22 L120,24 L140,18 L160,20 L180,14 L200,10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </article>
+        </section>
+
+        <!-- Charts row -->
+        <section class="grid-2">
+          <article class="card chart-card">
+            <header class="card-head">
+              <div>
+                <p class="eyebrow small">— Fluxo de caixa</p>
+                <h2 class="card-title">Entradas vs. saídas</h2>
+              </div>
+              <div class="legend">
+                <span><i class="sw sw-ink"></i> Entradas</span>
+                <span><i class="sw sw-line"></i> Saídas</span>
+              </div>
+            </header>
+
+            <div class="cashflow">
+              <div class="cf-axis">
+                <span>R$ 80k</span><span>R$ 60k</span><span>R$ 40k</span><span>R$ 20k</span><span>R$ 0</span>
+              </div>
+              <div class="cf-grid">
+                <div class="cf-row"><div class="bar in" style="--h:72%"></div><div class="bar out" style="--h:48%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:58%"></div><div class="bar out" style="--h:42%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:84%"></div><div class="bar out" style="--h:55%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:64%"></div><div class="bar out" style="--h:38%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:90%"></div><div class="bar out" style="--h:60%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:76%"></div><div class="bar out" style="--h:52%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:68%"></div><div class="bar out" style="--h:44%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:82%"></div><div class="bar out" style="--h:58%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:54%"></div><div class="bar out" style="--h:36%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:78%"></div><div class="bar out" style="--h:50%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:88%"></div><div class="bar out" style="--h:62%"></div></div>
+                <div class="cf-row"><div class="bar in" style="--h:94%"></div><div class="bar out" style="--h:56%"></div></div>
+              </div>
+              <div class="cf-labels">
+                <span>Sem 1</span><span>Sem 2</span><span>Sem 3</span><span>Sem 4</span>
+                <span>Sem 5</span><span>Sem 6</span><span>Sem 7</span><span>Sem 8</span>
+                <span>Sem 9</span><span>Sem 10</span><span>Sem 11</span><span>Sem 12</span>
+              </div>
+            </div>
+
+            <footer class="card-foot">
+              <div><p class="micro">Entradas</p><p class="mono strong">R$ 624.180,00</p></div>
+              <div><p class="micro">Saídas</p><p class="mono strong">R$ 401.940,00</p></div>
+              <div><p class="micro">Resultado</p><p class="mono strong up">+ R$ 222.240,00</p></div>
+            </footer>
+          </article>
+
+          <article class="card donut-card">
+            <header class="card-head">
+              <div>
+                <p class="eyebrow small">— Despesas por categoria</p>
+                <h2 class="card-title">Onde o dinheiro vai</h2>
+              </div>
+              <button class="link-btn">Ver detalhes →</button>
+            </header>
+
+            <div class="donut-wrap">
+              <svg class="donut" viewBox="0 0 42 42">
+                <circle cx="21" cy="21" r="15.915" fill="none" stroke="#e8e4dd" stroke-width="6"/>
+                <!-- 38% folha -->
+                <circle cx="21" cy="21" r="15.915" fill="none" stroke="#0d0d0d" stroke-width="6"
+                        stroke-dasharray="38 62" stroke-dashoffset="25" />
+                <!-- 24% operação -->
+                <circle cx="21" cy="21" r="15.915" fill="none" stroke="#3a3a3a" stroke-width="6"
+                        stroke-dasharray="24 76" stroke-dashoffset="-13" />
+                <!-- 18% marketing -->
+                <circle cx="21" cy="21" r="15.915" fill="none" stroke="#6b6b6b" stroke-width="6"
+                        stroke-dasharray="18 82" stroke-dashoffset="-37" />
+                <!-- 12% software -->
+                <circle cx="21" cy="21" r="15.915" fill="none" stroke="#a39d92" stroke-width="6"
+                        stroke-dasharray="12 88" stroke-dashoffset="-55" />
+                <!-- 8% outros -->
+                <circle cx="21" cy="21" r="15.915" fill="none" stroke="#cfc8bc" stroke-width="6"
+                        stroke-dasharray="8 92" stroke-dashoffset="-67" />
+                <text x="21" y="20" text-anchor="middle" class="donut-num">R$ 134k</text>
+                <text x="21" y="25" text-anchor="middle" class="donut-lbl">total mês</text>
+              </svg>
+
+              <ul class="donut-legend">
+                <li><i class="sw" style="background:#0d0d0d"></i> Folha de pagamento <strong>38%</strong></li>
+                <li><i class="sw" style="background:#3a3a3a"></i> Operação <strong>24%</strong></li>
+                <li><i class="sw" style="background:#6b6b6b"></i> Marketing <strong>18%</strong></li>
+                <li><i class="sw" style="background:#a39d92"></i> Software · SaaS <strong>12%</strong></li>
+                <li><i class="sw" style="background:#cfc8bc"></i> Outros <strong>8%</strong></li>
+              </ul>
+            </div>
+          </article>
+        </section>
+
+        <!-- AR / AP row -->
+        <section class="grid-2">
+          <article class="card">
+            <header class="card-head">
+              <div>
+                <p class="eyebrow small">— Contas a receber</p>
+                <h2 class="card-title">Próximos recebimentos</h2>
+              </div>
+              <span class="tag tag-soft">14 abertas</span>
+            </header>
+
+            <ul class="list">
+              <li>
+                <div>
+                  <p class="row-title">Acme Holding</p>
+                  <p class="row-sub">NF 0241 · Vence em 3 dias</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 48.200,00</p>
+                  <span class="status status-ok">No prazo</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="row-title">Norte Logística</p>
+                  <p class="row-sub">NF 0238 · Vence amanhã</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 22.900,00</p>
+                  <span class="status status-warn">A vencer</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="row-title">Studio Lume</p>
+                  <p class="row-sub">NF 0231 · Vencido há 2 dias</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 9.450,00</p>
+                  <span class="status status-late">Atrasado</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="row-title">Verve Comunicação</p>
+                  <p class="row-sub">NF 0244 · Vence em 9 dias</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 16.700,00</p>
+                  <span class="status status-ok">No prazo</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="row-title">Praia Cosméticos</p>
+                  <p class="row-sub">NF 0247 · Vence em 12 dias</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 31.180,00</p>
+                  <span class="status status-ok">No prazo</span>
+                </div>
+              </li>
+            </ul>
+
+            <footer class="card-foot tight">
+              <span class="micro">Total a receber</span>
+              <span class="mono strong">R$ 184.620,00</span>
+            </footer>
+          </article>
+
+          <article class="card">
+            <header class="card-head">
+              <div>
+                <p class="eyebrow small">— Contas a pagar</p>
+                <h2 class="card-title">Compromissos da semana</h2>
+              </div>
+              <span class="tag tag-dark">Aprovação</span>
+            </header>
+
+            <ul class="list">
+              <li>
+                <div>
+                  <p class="row-title">Aluguel · Sede São Paulo</p>
+                  <p class="row-sub">Vence 28 Out · Boleto</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 18.500,00</p>
+                  <span class="status status-warn">Aguardando</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="row-title">Folha · Outubro</p>
+                  <p class="row-sub">Vence 30 Out · 24 colaboradores</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 92.400,00</p>
+                  <span class="status status-ok">Programado</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="row-title">AWS · Infra</p>
+                  <p class="row-sub">Vence 02 Nov · Cartão corporativo</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 7.840,00</p>
+                  <span class="status status-ok">Programado</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="row-title">Fornecedor Gráfica Norte</p>
+                  <p class="row-sub">Vence 04 Nov · Pix</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 12.300,00</p>
+                  <span class="status status-warn">Aguardando</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="row-title">Impostos · DAS Simples</p>
+                  <p class="row-sub">Vence 20 Nov · DARF</p>
+                </div>
+                <div class="row-right">
+                  <p class="mono strong">R$ 23.110,00</p>
+                  <span class="status status-ok">Programado</span>
+                </div>
+              </li>
+            </ul>
+
+            <footer class="card-foot tight">
+              <span class="micro">Total a pagar</span>
+              <span class="mono strong">R$ 154.150,00</span>
+            </footer>
+          </article>
+        </section>
+
+        <!-- Budget + Transactions -->
+        <section class="grid-budget">
+          <article class="card">
+            <header class="card-head">
+              <div>
+                <p class="eyebrow small">— Orçamento por área</p>
+                <h2 class="card-title">Execução do mês</h2>
+              </div>
+              <button class="link-btn">Ajustar metas →</button>
+            </header>
+
+            <ul class="budget">
+              <li>
+                <div class="b-head"><span>Marketing</span><span class="mono">R$ 24.180 / R$ 30.000</span></div>
+                <div class="b-bar"><span style="width:80%"></span></div>
+                <p class="b-foot"><span class="micro">80% utilizado</span><span class="micro">restam R$ 5.820</span></p>
+              </li>
+              <li>
+                <div class="b-head"><span>Tecnologia</span><span class="mono">R$ 18.940 / R$ 22.000</span></div>
+                <div class="b-bar"><span style="width:86%"></span></div>
+                <p class="b-foot"><span class="micro">86% utilizado</span><span class="micro">restam R$ 3.060</span></p>
+              </li>
+              <li>
+                <div class="b-head"><span>Operação</span><span class="mono">R$ 32.760 / R$ 40.000</span></div>
+                <div class="b-bar"><span style="width:82%"></span></div>
+                <p class="b-foot"><span class="micro">82% utilizado</span><span class="micro">restam R$ 7.240</span></p>
+              </li>
+              <li>
+                <div class="b-head"><span>Comercial</span><span class="mono">R$ 14.220 / R$ 18.000</span></div>
+                <div class="b-bar"><span style="width:79%"></span></div>
+                <p class="b-foot"><span class="micro">79% utilizado</span><span class="micro">restam R$ 3.780</span></p>
+              </li>
+              <li>
+                <div class="b-head"><span>Pessoas · RH</span><span class="mono">R$ 9.610 / R$ 9.000</span></div>
+                <div class="b-bar over"><span style="width:100%"></span></div>
+                <p class="b-foot"><span class="micro warn">107% — acima do orçamento</span><span class="micro">excedente R$ 610</span></p>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <header class="card-head">
+              <div>
+                <p class="eyebrow small">— Lançamentos recentes</p>
+                <h2 class="card-title">Últimas movimentações</h2>
+              </div>
+              <div class="seg sm">
+                <button class="on">Tudo</button>
+                <button>Entradas</button>
+                <button>Saídas</button>
+              </div>
+            </header>
+
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Data</th>
+                    <th>Conta</th>
+                    <th class="right">Valor</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="row-title">Pagamento · Acme Holding</p>
+                      <p class="row-sub">NF 0240</p>
+                    </td>
+                    <td>Receita recorrente</td>
+                    <td class="mono">22 Out</td>
+                    <td>Itaú · 4421</td>
+                    <td class="right mono strong up">+ R$ 48.200,00</td>
+                    <td><span class="status status-ok">Conciliado</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="row-title">Folha quinzenal</p>
+                      <p class="row-sub">12 colaboradores</p>
+                    </td>
+                    <td>Folha de pagamento</td>
+                    <td class="mono">20 Out</td>
+                    <td>BTG · 1102</td>
+                    <td class="right mono strong down">− R$ 46.200,00</td>
+                    <td><span class="status status-ok">Conciliado</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="row-title">Assinatura · Figma Org</p>
+                      <p class="row-sub">28 licenças</p>
+                    </td>
+                    <td>Software · SaaS</td>
+                    <td class="mono">19 Out</td>
+                    <td>Cartão · 8810</td>
+                    <td class="right mono strong down">− R$ 4.320,00</td>
+                    <td><span class="status status-warn">Pendente</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="row-title">Recebimento · Verve</p>
+                      <p class="row-sub">NF 0237</p>
+                    </td>
+                    <td>Projeto pontual</td>
+                    <td class="mono">18 Out</td>
+                    <td>Itaú · 4421</td>
+                    <td class="right mono strong up">+ R$ 16.700,00</td>
+                    <td><span class="status status-ok">Conciliado</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="row-title">Mídia paga · Meta Ads</p>
+                      <p class="row-sub">Campanha Q4</p>
+                    </td>
+                    <td>Marketing</td>
+                    <td class="mono">17 Out</td>
+                    <td>Cartão · 8810</td>
+                    <td class="right mono strong down">− R$ 8.940,00</td>
+                    <td><span class="status status-ok">Conciliado</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="row-title">Recebimento · Praia</p>
+                      <p class="row-sub">NF 0235</p>
+                    </td>
+                    <td>Receita recorrente</td>
+                    <td class="mono">15 Out</td>
+                    <td>BTG · 1102</td>
+                    <td class="right mono strong up">+ R$ 31.180,00</td>
+                    <td><span class="status status-ok">Conciliado</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="row-title">Aluguel sede</p>
+                      <p class="row-sub">Outubro/2026</p>
+                    </td>
+                    <td>Operação</td>
+                    <td class="mono">10 Out</td>
+                    <td>Itaú · 4421</td>
+                    <td class="right mono strong down">− R$ 18.500,00</td>
+                    <td><span class="status status-late">Atrasado</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <footer class="card-foot tight">
+              <span class="micro">Mostrando 7 de 248 lançamentos</span>
+              <button class="link-btn">Ver todos →</button>
+            </footer>
+          </article>
+        </section>
+
+        <!-- Footer -->
+        <footer class="page-foot">
+          <p>© 2026 Ordere · Painel financeiro</p>
+          <p>Sincronizado há 2 min · v3.4.1</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

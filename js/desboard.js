@@ -14,9 +14,9 @@ async function carregarDadosDaTela() {
     // 2. Busca os dados na sua tabela 'users'
     const { data: perfil, error } = await supabase
         .from('users')
-        .select('name, email, money')
-        .eq('id', user.id) // Busca apenas a linha deste usuário
-        .single(); // Garante que venha apenas um resultado
+        .select('nome, sobrenome, nome-exibicao, email, renda, objetivo, entrada, saida, perfil-gastos, foco, role, bio, resumo-semanal, alertas, dicas')
+        .eq('id', user.id)
+        .single();
 
     if (error) {
         console.error("Erro ao carregar dados:", error.message);
@@ -25,20 +25,32 @@ async function carregarDadosDaTela() {
 
     console.log("Dados do perfil carregados:", perfil);
 
-    // 3. MOSTRAR NO HTML (A Mágica)
+    // 3. MOSTRAR NO HTML
     if (perfil) {
-        // Mostrando o Nome
-        document.getElementById('user-name').innerText = perfil.name || "Usuário";
-        
-        // Mostrando o E-mail
-        // document.getElementById('user-email').innerText = perfil.email;
+        const nomeExibicao = perfil['nome-exibicao'] || perfil.nome || "Usuário";
+        const nomeCompleto = perfil.sobrenome ? `${perfil.nome} ${perfil.sobrenome}` : perfil.nome || "Usuário";
 
-        // Mostrando o Dinheiro com formatação profissional (Exemplo de Variedade)
-        // const saldoFormatado = perfil.money.toLocaleString('pt-BR', { 
-        //     style: 'currency', 
-        //     currency: 'BRL' 
-        // });
-        // document.getElementById('user-money').innerText = saldoFormatado;
+        // Gerar iniciais para o avatar
+        const iniciais = nomeCompleto
+            .split(' ')
+            .map(p => p[0])
+            .slice(0, 2)
+            .join('')
+            .toUpperCase();
+
+        // Nome na página (saudação)
+        const elUserName = document.getElementById('user-name');
+        if (elUserName) elUserName.innerText = nomeExibicao;
+
+        // Dinheiro
+        // const elMoney = document.getElementById('money-test');
+        // if (elMoney) elMoney.innerText = perfil.money ? `R$ ${perfil.money}` : "R$ 0";
+
+        // Sidebar - nome da conta
+
+        // Sidebar - avatar com iniciais
+        // const elAccountAvatar = document.getElementById('account-avatar');
+        // if (elAccountAvatar) elAccountAvatar.innerText = iniciais;
     }
 }
 
